@@ -62,6 +62,7 @@ const Home = ({ bookmarks }: BookmarksProps) => {
     }
     return option;
   };
+  console.log('api', process.env.NEXT_PUBLIC_API_URL);
   return (
     <div>
       {user && (

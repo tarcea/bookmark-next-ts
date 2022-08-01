@@ -2,7 +2,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const getBookmarks = async () => {
   try {
-    const response = await fetch(`api/bookmarks`);
+    const response = await fetch(`${apiUrl}/bookmarks`);
     const bookmarks = await response.json();
 
     return bookmarks;
@@ -13,7 +13,7 @@ export const getBookmarks = async () => {
 
 export const createBookmark = async (bookmark: Bookmark) => {
   try {
-    await fetch(`api/bookmarks`, {
+    await fetch(`${apiUrl}/bookmarks`, {
       body: JSON.stringify(bookmark),
       method: 'POST',
       headers: {
@@ -27,7 +27,7 @@ export const createBookmark = async (bookmark: Bookmark) => {
 
 export const deleteBookmark = async (id: string) => {
   try {
-    await fetch(`api/bookmarks/${id}`, {
+    await fetch(`${apiUrl}/bookmarks/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
