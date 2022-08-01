@@ -15,7 +15,7 @@ const Login = () => {
       await signInWithGoogle();
       router.push('/');
     } catch (err) {
-      console.log('Failed sign in with google');
+      console.log('Failed sign in with google', err);
     }
   };
   return (
