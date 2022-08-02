@@ -12,7 +12,7 @@ const BookmarkList = ({ bookmarks }: BookmarksProps) => {
               return (
                 <div
                   key={bookmark.id}
-                  className='my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-2 lg:w-1/3'
+                  className='my-3 px-1 w-full md:w-1/2 lg:my-4 lg:px-2 lg:w-1/3'
                 >
                   <Bookmark bookmark={bookmark} />
                 </div>
