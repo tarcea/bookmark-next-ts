@@ -7,7 +7,8 @@ import {
 } from 'react-social-login-buttons';
 
 const Auth = () => {
-  const { signInWithGoogle, signInWithFacebook, signInWithGithub } = useAuth();
+  const { signInWithGoogle, signInWithFacebook, signInWithGithub, setMessage } =
+    useAuth();
   const router = useRouter();
 
   const handleGoogleAuth = async () => {
@@ -15,7 +16,11 @@ const Auth = () => {
       await signInWithGoogle();
       router.push('/');
     } catch (err) {
-      console.log('Failed sign in with google', err);
+      if (err instanceof Error) {
+        setMessage('Failed sign in with google' + '-' + err.message);
+      } else {
+        setMessage('Someting went wrong while signing in with google');
+      }
     }
   };
 
@@ -24,7 +29,11 @@ const Auth = () => {
       await signInWithFacebook();
       router.push('/');
     } catch (err) {
-      console.log('Failed sign in with facebook', err);
+      if (err instanceof Error) {
+        setMessage('Failed sign in with facebook' + '-' + err.message);
+      } else {
+        setMessage('Someting went wrong while signing in with facebook');
+      }
     }
   };
 
@@ -33,7 +42,11 @@ const Auth = () => {
       await signInWithGithub();
       router.push('/');
     } catch (err) {
-      console.log('Failed sign in with github', err);
+      if (err instanceof Error) {
+        setMessage('Failed sign in with github' + '-' + err.message);
+      } else {
+        setMessage('Someting went wrong while signing in with github');
+      }
     }
   };
 

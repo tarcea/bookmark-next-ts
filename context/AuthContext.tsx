@@ -23,6 +23,7 @@ interface ContextProps {
 export const AuthContextProvider = ({ children }: ContextProps) => {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState('');
 
   const signInWithGoogle = async () => {
     await signInWithPopup(auth, googleProvider);
@@ -64,6 +65,8 @@ export const AuthContextProvider = ({ children }: ContextProps) => {
         signInWithFacebook,
         signInWithGithub,
         logout,
+        message,
+        setMessage,
       }}
     >
       {!loading && children}

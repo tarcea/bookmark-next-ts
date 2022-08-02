@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 const PreviewLink = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const placeholder = process.env.NEXT_PUBLIC_PLACEHOLDER!;
-  const { user } = useAuth();
+  const { user, setMessage, message } = useAuth();
   const router = useRouter();
   const [url, setUrl] = useState('');
   const [data, setData] = useState<any>(null);
@@ -21,6 +21,8 @@ const PreviewLink = () => {
     });
     const result = await response.json();
     setData(result);
+
+    setMessage(result.message);
   };
 
   const saveBookmark = async (e: SyntheticEvent) => {
@@ -101,27 +103,24 @@ const PreviewLink = () => {
         </button>
       )}
       {/* </form> */}
-      {data &&
-        (data.message ? (
-          <div>{data.message}</div>
-        ) : (
-          <div className='w-full justify-center items-center bg-white shadow-lg rounded-lg flex flex-col hover:shadow-md h-full relative'>
-            <Image
-              loader={imgLoader}
-              src='/1.jpg'
-              alt='image'
-              width={300}
-              height={300}
-              className='w-full p-4 justify-start flex flex-col'
-              loading='lazy'
-            />
+      {data && !data.message && (
+        <div className='w-full justify-center items-center bg-white shadow-lg rounded-lg flex flex-col hover:shadow-md h-full relative'>
+          <Image
+            loader={imgLoader}
+            src='/1.jpg'
+            alt='image'
+            width={300}
+            height={300}
+            className='w-full p-4 justify-start flex flex-col'
+            loading='lazy'
+          />
 
-            <div className='w-full p-4 justify-start flex flex-col'>
-              <div className='border-b-2 text-xl'>{data.title}</div>
-              <p className='my-4'>{data.description}</p>
-            </div>
+          <div className='w-full p-4 justify-start flex flex-col'>
+            <div className='border-b-2 text-xl'>{data.title}</div>
+            <p className='my-4'>{data.description}</p>
           </div>
-        ))}
+        </div>
+      )}
     </div>
   );
 };
