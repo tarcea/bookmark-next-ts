@@ -70,7 +70,7 @@ const PreviewLink = () => {
         data.message ? (
           <button
             onClick={handleSubmit}
-            className='border border-l-0 p-1 text-xs'
+            className='border border-l-0 p-1 text-xs md:text-lg'
           >
             preview
           </button>
@@ -95,7 +95,7 @@ const PreviewLink = () => {
       ) : (
         <button
           onClick={handleSubmit}
-          className='border border-l-0 p-1 text-xs'
+          className='border border-l-0 p-1 text-xs md:text-lg'
         >
           preview
         </button>
