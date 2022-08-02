@@ -1,5 +1,4 @@
 import type { GetServerSideProps } from 'next';
-import Head from 'next/head';
 import { useState } from 'react';
 import { getBookmarks } from '../apiActions/apiActions';
 import Filter from '../components/Filter';
@@ -43,13 +42,11 @@ const Home = ({ bookmarks }: BookmarksProps) => {
     let option: Bookmark[] = [];
     switch (filterOption) {
       case 'all bookmarks':
-        option = userbookmarks(bookmarks).sort((a, b) =>
-          a.createdAt > b.createdAt ? 1 : -1
-        );
+        option = bookmarks;
         break;
       case 'my bookmarks':
         option = mybookmarks(bookmarks).sort((a, b) =>
-          a.createdAt > b.createdAt ? 1 : -1
+          b.createdAt > a.createdAt ? 1 : -1
         );
         break;
       case 'my public bookmarks':
@@ -62,7 +59,7 @@ const Home = ({ bookmarks }: BookmarksProps) => {
     }
     return option;
   };
-  console.log('api', process.env.NEXT_PUBLIC_API_URL);
+
   return (
     <div className='text-center'>
       <div className=''>

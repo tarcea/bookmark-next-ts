@@ -64,11 +64,14 @@ const PreviewLink = () => {
         onChange={(e) => setUrl(e.target.value)}
         value={url}
         placeholder='paste here the web address'
-        className='w-52 text-xs md:text-lg md:w-80 border p-1 m-5'
+        className='w-52 text-xs md:text-lg md:w-80 border p-1 my-5'
       />
       {data ? (
         data.message ? (
-          <button onClick={handleSubmit} className='ml-5 border'>
+          <button
+            onClick={handleSubmit}
+            className='border border-l-0 p-1 text-xs'
+          >
             preview
           </button>
         ) : (
@@ -81,16 +84,19 @@ const PreviewLink = () => {
               onChange={onInputChange}
               className='ml-2'
             />
-            <button onClick={cancelPreview} className='ml-5'>
+            <button onClick={cancelPreview} className='ml-2'>
               cancel
             </button>
-            <button onClick={saveBookmark} className='ml-5'>
+            <button onClick={saveBookmark} className='ml-2'>
               bookmark
             </button>
           </>
         )
       ) : (
-        <button onClick={handleSubmit} className='ml-5'>
+        <button
+          onClick={handleSubmit}
+          className='border border-l-0 p-1 text-xs'
+        >
           preview
         </button>
       )}
