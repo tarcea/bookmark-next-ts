@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { TiDeleteOutline } from 'react-icons/ti';
 import { useRouter } from 'next/router';
 import { SyntheticEvent, useEffect, useState } from 'react';
 import { deleteBookmark } from '../apiActions/apiActions';
@@ -41,10 +41,10 @@ const Bookmark = ({ bookmark }: BookmarkProps) => {
             <p className='my-4'>{bookmark.description}</p>
             {user && user.uid === bookmark.userId && (
               <button
-                className='text-black hover:text-white absolute -top-3 -left-2 hover:bg-black bg-white rounded-full w-8 h-8'
+                className=' absolute -top-3 -left-2'
                 onClick={handleDelete}
               >
-                X
+                <TiDeleteOutline className='text-black hover:text-white hover:bg-black bg-white rounded-full w-8 h-8' />
               </button>
             )}
           </div>

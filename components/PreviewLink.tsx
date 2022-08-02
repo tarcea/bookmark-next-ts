@@ -56,7 +56,7 @@ const PreviewLink = () => {
   };
 
   return (
-    <div className='p-2.5 '>
+    <div className='p-2.5'>
       {/* <form onSubmit={handleSubmit}> */}
 
       <input
@@ -105,19 +105,21 @@ const PreviewLink = () => {
         (data.message ? (
           <div>{data.message}</div>
         ) : (
-          <div>
-            <div className='w-1/2'>
-              <Image
-                loader={imgLoader}
-                src='/1.jpg'
-                alt='image'
-                width={200}
-                height={200}
-                layout='responsive'
-              />
+          <div className='w-full justify-center items-center bg-white shadow-lg rounded-lg flex flex-col hover:shadow-md h-full relative'>
+            <Image
+              loader={imgLoader}
+              src='/1.jpg'
+              alt='image'
+              width={300}
+              height={300}
+              className='w-full p-4 justify-start flex flex-col'
+              loading='lazy'
+            />
+
+            <div className='w-full p-4 justify-start flex flex-col'>
+              <div className='border-b-2 text-xl'>{data.title}</div>
+              <p className='my-4'>{data.description}</p>
             </div>
-            <h2>{data.title}</h2>
-            <p>{data.description}</p>
           </div>
         ))}
     </div>
