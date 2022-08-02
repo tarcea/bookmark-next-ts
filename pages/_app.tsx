@@ -7,7 +7,7 @@ import ProtectedRoute from '../components/ProtectedRoute';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
-  const noAuthRequired = ['/', '/login', '/signup'];
+  const noAuthRequired = ['/', '/login', '/signup', '/about'];
 
   return (
     <AuthContextProvider>

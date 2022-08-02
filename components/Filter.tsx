@@ -6,9 +6,10 @@ const Filter = ({ filterOption, setFilterOption }: any) => {
   };
 
   return (
-    <div>
+    <div className='p-2'>
       <form>
         <select
+          className='bg-white border w-80 text-lg'
           name='filter'
           id='filter'
           value={filterOption}

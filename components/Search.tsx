@@ -21,6 +21,7 @@ const Search = ({ bookmarks }: BookmarksProps) => {
         value={searchTerm}
         onChange={editSearchTerm}
         placeholder='Search'
+        className='w-80 text-xs md:text-lg md:w-80 border p-1'
       />
 
       <BookmarkList bookmarks={dSearch()} />

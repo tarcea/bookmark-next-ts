@@ -64,17 +64,17 @@ const Home = ({ bookmarks }: BookmarksProps) => {
   };
   console.log('api', process.env.NEXT_PUBLIC_API_URL);
   return (
-    <div>
-      {user && (
-        <>
-          <PreviewLink />
+    <div className='text-center'>
+      <div className=''>
+        {user && <PreviewLink />}
+        {user && (
           <Filter
             filterOption={filterOption}
             setFilterOption={setFilterOption}
           />
-        </>
-      )}
-      <Search bookmarks={selectbookmarksToShow(bookmarks)} />
+        )}
+        <Search bookmarks={selectbookmarksToShow(bookmarks)} />
+      </div>
     </div>
   );
 };

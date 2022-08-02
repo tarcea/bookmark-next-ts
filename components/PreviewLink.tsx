@@ -39,13 +39,14 @@ const PreviewLink = () => {
     setUrl('');
     router.push('/');
   };
-  console.log(data);
+
   const imgLoader = () => {
     return data?.image || placeholder;
   };
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+    // e.preventDefault();
+    // e.stopPropagation();
     setIsPublic(!isPublic);
   };
 
@@ -55,7 +56,7 @@ const PreviewLink = () => {
   };
 
   return (
-    <div>
+    <div className='p-2.5 '>
       {/* <form onSubmit={handleSubmit}> */}
 
       <input
@@ -63,11 +64,11 @@ const PreviewLink = () => {
         onChange={(e) => setUrl(e.target.value)}
         value={url}
         placeholder='paste here the web address'
-        className='w-52'
+        className='w-52 text-xs md:text-lg md:w-80 border p-1 m-5'
       />
       {data ? (
         data.message ? (
-          <button onClick={handleSubmit} className='ml-5'>
+          <button onClick={handleSubmit} className='ml-5 border'>
             preview
           </button>
         ) : (
@@ -78,7 +79,7 @@ const PreviewLink = () => {
               name='public'
               checked={isPublic}
               onChange={onInputChange}
-              className='ml-5'
+              className='ml-2'
             />
             <button onClick={cancelPreview} className='ml-5'>
               cancel

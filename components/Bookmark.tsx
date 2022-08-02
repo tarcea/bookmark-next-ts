@@ -10,7 +10,7 @@ const Bookmark = ({ bookmark }: BookmarkProps) => {
 
   const router = useRouter();
   const { user } = useAuth();
-  console.log(user);
+
   const imgLoader = () => {
     return bookmark.image || placeholder;
   };
@@ -41,7 +41,7 @@ const Bookmark = ({ bookmark }: BookmarkProps) => {
             <p className='my-4'>{bookmark.description}</p>
             {user && user.uid === bookmark.userId && (
               <button
-                className='text-white hover:text-black absolute -top-3 -left-3 hover:bg-white bg-black rounded-full w-8 h-8'
+                className='text-black hover:text-white absolute -top-3 -left-2 hover:bg-black bg-white rounded-full w-8 h-8'
                 onClick={handleDelete}
               >
                 X

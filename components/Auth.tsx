@@ -38,7 +38,8 @@ const Auth = () => {
   };
 
   return (
-    <div className='md:w-1/2'>
+    <div className='md:w-1/2 mx-auto'>
+      <p className='text-center text-3xl p-2.5'>Choose a login option</p>
       <GoogleLoginButton onClick={handleGoogleAuth} />
       <FacebookLoginButton onClick={handleFacebookAuth} />
       <GithubLoginButton onClick={handleGithubAuth} />
