@@ -7,7 +7,7 @@ import {
 } from 'react-social-login-buttons';
 
 const Login = () => {
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogle, signInWithFacebook, signInWithGithub } = useAuth();
   const router = useRouter();
 
   const handleGoogleAuth = async () => {
@@ -18,10 +18,20 @@ const Login = () => {
       console.log('Failed sign in with google', err);
     }
   };
+
+  const handleFacebookAuth = async () => {
+    try {
+      await signInWithFacebook();
+      router.push('/');
+    } catch (err) {
+      console.log('Failed sign in with facebook', err);
+    }
+  };
+
   return (
     <div className='md:w-1/2'>
       <GoogleLoginButton onClick={handleGoogleAuth} />
-      <FacebookLoginButton />
+      <FacebookLoginButton onClick={handleFacebookAuth} />
       <GithubLoginButton />
     </div>
   );
