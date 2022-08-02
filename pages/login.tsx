@@ -1,7 +1,7 @@
-import Login from '../components/Login';
+import Auth from '../components/Auth';
 
 const login = () => {
-  return <Login />;
+  return <Auth />;
 };
 
 export default login;

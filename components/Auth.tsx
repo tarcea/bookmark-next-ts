@@ -6,7 +6,7 @@ import {
   GithubLoginButton,
 } from 'react-social-login-buttons';
 
-const Login = () => {
+const Auth = () => {
   const { signInWithGoogle, signInWithFacebook, signInWithGithub } = useAuth();
   const router = useRouter();
 
@@ -28,13 +28,22 @@ const Login = () => {
     }
   };
 
+  const handleGithubAuth = async () => {
+    try {
+      await signInWithGithub();
+      router.push('/');
+    } catch (err) {
+      console.log('Failed sign in with github', err);
+    }
+  };
+
   return (
     <div className='md:w-1/2'>
       <GoogleLoginButton onClick={handleGoogleAuth} />
       <FacebookLoginButton onClick={handleFacebookAuth} />
-      <GithubLoginButton />
+      <GithubLoginButton onClick={handleGithubAuth} />
     </div>
   );
 };
 
-export default Login;
+export default Auth;
