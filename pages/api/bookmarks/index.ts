@@ -1,5 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import Cookies from 'cookies';
 import { createBookmark, getBookmarks } from '../../../db/dbActions';
+// import { getAuth } from 'firebase-admin/auth';
+// import { firebaseInit } from '../../../config/firebaseSetupAdmin';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // const { description, image, title, url, userId } = req.body;
@@ -8,6 +11,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs;
 
   try {
+    // firebaseInit;
+    // const auth = getAuth();
+    // console.log(req.headers.cookie);
+
     switch (method) {
       case 'POST': {
         const bookmark = await createBookmark(req.body);
@@ -15,6 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         break;
       }
       case 'GET': {
+        console.log(req.headers);
         const bookmarks = await getBookmarks();
         res.status(200).json(bookmarks);
         break;

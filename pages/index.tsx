@@ -7,9 +7,10 @@ import Search from '../components/Search';
 import { useAuth } from '../context/AuthContext';
 
 const Home = ({ bookmarks }: BookmarksProps) => {
-  const { user } = useAuth();
-  const [filterOption, setFilterOption] = useState('all bookmarks');
+  const { user, token } = useAuth();
 
+  const [filterOption, setFilterOption] = useState('all bookmarks');
+  console.log(user, token);
   const publicbookmarks = (bookmarks: Bookmark[]) => {
     return bookmarks.filter((bookmark) => bookmark.public);
   };
@@ -76,9 +77,9 @@ const Home = ({ bookmarks }: BookmarksProps) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  res.setHeader('Autorization', 'ssskkkkk');
   const bookmarks = await getBookmarks();
-
   return {
     props: { bookmarks },
     // revalidate: 1,

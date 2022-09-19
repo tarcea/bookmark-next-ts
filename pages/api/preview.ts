@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import jsdom from 'jsdom';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const { JSDOM } = jsdom;
 
@@ -73,7 +73,7 @@ export const scraper = async (req: NextApiRequest, res: NextApiResponse) => {
         : details['og:image'] || details['image'];
 
     const result = {
-      title: title?.text,
+      title: title?.text || '',
       url: url,
       description:
         details['description'] ||

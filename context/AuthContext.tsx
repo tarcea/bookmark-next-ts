@@ -24,6 +24,7 @@ export const AuthContextProvider = ({ children }: ContextProps) => {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
+  const [token, setToken] = useState('');
 
   const signInWithGoogle = async () => {
     await signInWithPopup(auth, googleProvider);
@@ -43,13 +44,15 @@ export const AuthContextProvider = ({ children }: ContextProps) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUser({
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
+          photo: user.photoURL,
         });
+        setToken(await user.getIdToken());
       } else {
         setUser(null);
       }
@@ -67,6 +70,7 @@ export const AuthContextProvider = ({ children }: ContextProps) => {
         logout,
         message,
         setMessage,
+        token,
       }}
     >
       {!loading && children}
